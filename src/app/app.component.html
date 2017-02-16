@@ -1,3 +1,13 @@
-<h1>
-  {{title}}
-</h1>
+<div class="app-container">
+  <h1>{{title}}</h1>
+
+  <div class="form-container">
+
+    <md-tab-group>
+      <md-tab label="{{ tab }}" *ngFor="let tab of tabs">
+        <p>tab content</p>
+      </md-tab>
+    </md-tab-group>
+  </div>
+</div>
+
