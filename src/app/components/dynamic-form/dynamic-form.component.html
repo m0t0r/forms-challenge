@@ -1,0 +1,17 @@
+<div class="dynamic-form">
+  <form (ngSubmit)="onSubmit()" [formGroup]="form">
+
+    <div *ngFor="let attribute of attributes">
+      <dynamic-attribute [attribute]="attribute" [form]="form"></dynamic-attribute>
+    </div>
+
+
+    <div class="form-row">
+      <button md-raised-button color="primary" type="submit" [disabled]="form.invalid">Save</button>
+    </div>
+
+   <div>
+     <pre>{{ form.value | json }}</pre>
+   </div>
+  </form>
+</div>
