@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Attribute } from '../../models/attribute.model';
-import { FormGroup } from '@angular/forms';
+import { FormBuilder, FormArray, Validators } from '@angular/forms';
+import { Attribute } from "../../models/attribute.model";
 
 @Component({
   selector: 'dynamic-attribute',
@@ -8,13 +8,23 @@ import { FormGroup } from '@angular/forms';
   styleUrls: ['./dynamic-attribute.component.scss']
 })
 export class DynamicAttributeComponent implements OnInit {
+  @Input() key: number;
   @Input() attribute: Attribute;
-  @Input() form: FormGroup;
+  @Input() form: FormArray;
 
-
-  constructor() { }
+  constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
+    let attributesArray: FormArray = <FormArray>this.form.get('attributes');
+
+    if(!attributesArray.at(this.key)) {
+      let attributeGroup =  this.fb.group({
+        name: [this.attribute.name, Validators.required],
+        description: [this.attribute.description]
+      });
+
+      attributesArray.push(attributeGroup);
+    }
   }
 
 }

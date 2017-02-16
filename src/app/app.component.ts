@@ -10,19 +10,22 @@ import { MdTabChangeEvent } from '@angular/material';
 export class AppComponent implements OnInit {
   public title = 'Nested Forms Challenge';
   public tabs: string[]= ['Tab 1', 'Tab 2', 'Tab 3', 'Tab 4', 'Tab 5'];
+  public selectedCategory: string= '';
   filteredAttributes: Attribute[] = [];
   public attributes: Attribute[] = [
-    {name: 'Attribute 1', category: 'Tab 1', description: '', key: 'attribute_1'},
-    {name: 'Attribute 2', category: 'Tab 1', description: '', key: 'attribute_2'},
-    {name: 'Attribute 1', category: 'Tab 2', description: '', key: 'attribute_3'}
+    {name: 'Attribute 1', category: 'Tab 1', description: ''},
+    {name: 'Attribute 2', category: 'Tab 1', description: ''},
+    {name: 'Attribute 1', category: 'Tab 2', description: ''}
   ];
 
   ngOnInit(): void {
     this.filterAttributesByCategory(this.tabs[0]);
+    this.selectedCategory = this.tabs[0];
   }
 
   filterAttributes(event: MdTabChangeEvent): void {
     let category = event.tab.textLabel;
+    this.selectedCategory = category;
     this.filterAttributesByCategory(category);
   }
 

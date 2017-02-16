@@ -1,5 +1,17 @@
-<div class="dynamic-attribute" [formGroup]="form">
+<div [formGroup]="form">
 
-  <pre>{{attribute | json }}</pre>
+  <div formArrayName="attributes">
+    <div class="dynamic-attribute" formGroupName="{{ key }}">
+      <div >
+        <md-input-container>
+          <input mdInput placeholder="Name" type="text" id="name_{{key}}" formControlName="name">
+        </md-input-container>
+
+        <md-input-container>
+          <input mdInput placeholder="Description" type="text" id="description_{{key}}" formControlName="description">
+        </md-input-container>
+      </div>
+    </div>
+  </div>
 
 </div>
