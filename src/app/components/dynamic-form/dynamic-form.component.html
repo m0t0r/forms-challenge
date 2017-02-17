@@ -1,13 +1,19 @@
 <div class="dynamic-form">
   <form (ngSubmit)="onSubmit()" [formGroup]="form">
 
-    <div formArrayName="attributes" *ngFor="let attribute of attributes, let i = index;">
-      <dynamic-attribute [key]="i" [attribute]="attribute" [form]="form"></dynamic-attribute>
-    </div>
+    <md-tab-group (selectChange)="filterAttributes($event)">
+      <md-tab label="{{ category }}" *ngFor="let category of categories">
 
+        <div formArrayName="attributes" *ngFor="let attribute of filteredAttributes, let i = index;">
+          <dynamic-attribute [key]="i" [attribute]="attribute"></dynamic-attribute>
+        </div>
 
-    <div class="form-row">
-      <button md-raised-button color="primary" type="submit" [disabled]="form.invalid">Save</button>
+      </md-tab>
+    </md-tab-group>
+
+    <div class="form-btn-controls">
+      <button md-raised-button color="primary" (click)="addNewAttribute($event)" >ADD NEW ATTRIBUTE</button>
+      <button md-raised-button color="accent" type="submit" [disabled]="form.invalid">SAVE</button>
     </div>
 
    <div>

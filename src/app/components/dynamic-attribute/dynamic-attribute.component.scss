@@ -1,0 +1,14 @@
+.dynamic-attribute {
+  border: 1px solid #eee;
+  border-top: none;
+  padding: 35px;
+}
+
+.layout-container {
+  margin-top: 20px;
+}
+
+.layout-container md-input-container:not(:last-child),
+.layout-container md-select:not(:last-child) {
+  margin-right: 2%;
+}

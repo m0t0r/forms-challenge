@@ -2,11 +2,7 @@
   <h1>{{title}}</h1>
 
   <div class="form-container">
-    <md-tab-group (selectChange)="filterAttributes($event)">
-      <md-tab label="{{ tab }}" *ngFor="let tab of tabs">
-        <dynamic-form [attributes]="filteredAttributes"></dynamic-form>
-      </md-tab>
-    </md-tab-group>
+    <dynamic-form [categories]="categories" [attributes]="attributes"></dynamic-form>
   </div>
 </div>
 

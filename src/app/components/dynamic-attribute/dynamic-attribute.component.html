@@ -1,17 +1,47 @@
-<div [formGroup]="form">
-
-  <div formArrayName="attributes">
-    <div class="dynamic-attribute" formGroupName="{{ key }}">
-      <div >
-        <md-input-container>
+<div [formGroup]="attribute">
+  <div class="dynamic-attribute">
+    <div >
+      <div>
+        <!-- buttons to toggle/delete -->
+      </div>
+      <div class="layout-container">
+        <md-input-container class="col-3">
           <input mdInput placeholder="Name" type="text" id="name_{{key}}" formControlName="name">
         </md-input-container>
 
-        <md-input-container>
+        <md-input-container class="col-9">
           <input mdInput placeholder="Description" type="text" id="description_{{key}}" formControlName="description">
         </md-input-container>
       </div>
+      <div>
+        <div class="layout-container">
+          <md-select class="col-4" placeholder="Default Value" formControlName="deviceResourceType"></md-select>
+
+          <md-input-container class="col-8">
+            <input mdInput placeholder="Default Value" type="text" id="default_value_{{key}}" formControlName="defaultValue">
+          </md-input-container>
+        </div>
+
+        <div class="layout-container">
+          <md-select class="col-4" placeholder="Data Type" formControlName="dataType">
+            <md-option *ngFor="let dtype of dataTypes" [value]="dtype">{{ dtype }}</md-option>
+          </md-select>
+
+          <md-select class="col-8" placeholder="Format" formControlName="format">
+            <md-option *ngFor="let format of formats" [value]="format">{{ format }}</md-option>
+          </md-select>
+        </div>
+
+        <div class="layout-container">
+          <md-input-container class="col-6">
+            <input mdInput placeholder="Enumerations" type="text" id="enumerations_{{key}}" formControlName="enumerations">
+          </md-input-container>
+          <div class="col-6">
+            <button md-raised-button color="accent">ADD</button>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
-
 </div>
